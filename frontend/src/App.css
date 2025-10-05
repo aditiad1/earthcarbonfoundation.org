@@ -1,34 +1,129 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Import Manrope font */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap');
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.App-link {
-    color: #61dafb;
+::-webkit-scrollbar-track {
+  @apply bg-background-light dark:bg-background-dark;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/50;
+}
+
+/* Focus styles */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  @apply ring-2 ring-primary ring-offset-2;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom utilities */
+.prose-custom {
+  @apply prose prose-lg dark:prose-invert max-w-none;
+}
+
+.prose-custom h1,
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4,
+.prose-custom h5,
+.prose-custom h6 {
+  @apply font-display font-semibold text-foreground-light dark:text-foreground-dark;
+}
+
+.prose-custom p {
+  @apply text-foreground-light/90 dark:text-foreground-dark/90;
+}
+
+.prose-custom a {
+  @apply text-primary hover:underline;
+}
+
+/* Button animations */
+.btn-primary {
+  @apply bg-primary text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 hover:bg-primary/90 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-primary/20 text-primary font-bold py-3 px-6 rounded-lg transition-all duration-200 hover:bg-primary/30 hover:shadow-lg active:scale-95;
+}
+
+/* Loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form animations */
+.form-input {
+  @apply transition-all duration-200 focus:ring-2 focus:ring-primary focus:border-primary;
+}
+
+.form-input:focus {
+  transform: translateY(-1px);
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Background patterns */
+.bg-climate-action {
+  background-image: url('https://images.unsplash.com/photo-1550937748-26154b518293?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark mode transitions */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
